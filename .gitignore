@@ -1,3 +1,5 @@
 build
 dist
 marcoutils.egg-info
+*.pyc
+marcopolo_shell.egg-info/

@@ -5,7 +5,7 @@ MarcoPolo utilities
 """
 
 from setuptools import setup, find_packages
-import os, glob
+import os, glob, sys, stat
 
 if __name__ == "__main__":
 
@@ -16,14 +16,18 @@ if __name__ == "__main__":
 
 
     data_files = [
-                     ('/usr/local/bin', glob.glob("shellutils/*.sh"))
+                     ('/usr/local/bin', glob.glob("usr/local/bin/*"))
                  ]
 
+    if "install" in sys.argv:
+        for f in glob.glob("usr/local/bin/*"):
+            os.chmod(f, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR | stat.S_IRGRP | stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH)
+
     setup(
-        name="marcoutils",
+        name="marcopolo-shell",
         namespace_packages=['marcopolo'],
         provides=['marcopolo.utils'],
-        version="0.0.1",
+        version="0.0.2",
         description="A set of useful utilities for MarcoPolo",
 
         long_description=long_description,
@@ -40,19 +44,22 @@ if __name__ == "__main__":
             'Development Status :: 3 - Alpha',
 
             'Intended Audience :: Developers',
-
-            'Topic :: Software Development :: Build Tools',
+            'Intended Audience :: System Administrators',
+            
             'Operating System :: POSIX :: Linux',
-            'License :: OSI Approved :: MIT License',
 
             'Programming Language :: Python :: 2.7',
             'Programming Language :: Python :: 3.4',
 
+            'Topic :: System :: Networking',
+            'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
+
+            'Natural Language :: English',
         ],
 
-        keywords="marcopolo utilities",
+        keywords="marcopolo shell utilities",
         
-        install_requires=["marcopolo>=0.0.1", "marcopolobindings>=0.0.1"],
+        install_requires=["marcopolo>=0.0.1", "marcopolo.bindings>=0.0.1"],
         
         zip_safe=False,
         
@@ -66,3 +73,5 @@ if __name__ == "__main__":
         },
 
     )
+
+    
