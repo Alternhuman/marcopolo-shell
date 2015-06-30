@@ -32,7 +32,7 @@ esac
 
 done
 
-lista=$(marcodiscover.py  --shell)
+lista=$(marcodiscover  --shell)
 
 for i in $lista; do
 	ssh $USER $PORT $i $COMMAND

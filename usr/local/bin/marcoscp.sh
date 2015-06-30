@@ -36,7 +36,7 @@ esac
 
 done
 
-lista=$(marcodiscover.py  --shell)
+lista=$(marcodiscover  --shell)
 
 for i in $lista; do
 	scp $RECURSIVE $DIRECTORIES $USUARIO$i:$DIRECTORY
