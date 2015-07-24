@@ -27,7 +27,7 @@ if __name__ == "__main__":
         name="marcopolo-shell",
         namespace_packages=['marcopolo'],
         provides=['marcopolo.utils'],
-        version="0.0.2",
+        version="0.0.3",
         description="A set of useful utilities for MarcoPolo",
 
         long_description=long_description,
@@ -64,7 +64,6 @@ if __name__ == "__main__":
         zip_safe=False,
         
         data_files=data_files,
-        #packages=['marcopolo.utils'],
         packages=find_packages(),
         entry_points={
             'console_scripts': ['marcodiscover = marcopolo.utils.marcodiscover:main',
